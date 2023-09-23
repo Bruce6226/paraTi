@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>PARA TI</title>
+    <style>
+        body {
+            display: flex;
+            background: black;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;width: 400px;
+        }
+
+        #flower-container {
+            position: absolute;
+            width: 400px;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -1;
+        }
+        #play-btn,
+        #phrase-btn {
+            width: 200px;
+            height: 80px;
+            background-color: #FF80AB;
+            color: #FFFFFF;
+            text-align: center;
+            line-height: 80px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        #phrase-btn {
+            width: auto;
+            height: auto;
+            padding: 0px 20px 0px 20px;
+            background-color: #FF4081;
+            color: #FFFFFF;
+        }
+
+        #phrase-btn:hover {
+            background-color: #FF4081;
+        }
+
+        #play-btn {
+            display: block;
+            margin-top: 200px;
+        }
+
+        #phrase-btn,
+        #pulse-btn {
+            display: none;
+        }
+
+        #reset-btn {
+            display: none;
+            width: 120px;
+            height: 40px;
+            background-color: #ff0000;
+            color: #ffffff;
+            font-size: 14px;
+            opacity: 0.5;
+            cursor: pointer;
+            opacity: 0.5;
+        }
+
+        #reset-container {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            background-color: #ee6060;
+            opacity: 0.5;
+        }
+
+        #reset-container:hover {
+            background-color: #f7b2b2;
+        }
+
+        #pulse-btn {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 35px;
+            animation: pulse 2s infinite;
+        }
+
+        .countdown {
+            font-size: 40px;
+            color: #ffffff;
+            margin-bottom: 30px;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .flower {
+            height: 200px;
+            width: 200px;
+            margin: 20px auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+            background-color: transparent;
+            /* Fondo negro para toda la página */
+
+            /* Agrega una animación de pulsación */
+            animation: pulsate 2s infinite;
+        }
+
+        .text-above,
+        .text-below {
+            position: absolute;
+            text-align: center;
+            color: #fff;
+            /* Color del texto */
+            font-size: 25px;
+            /* Tamaño del texto */
+        }
+
+        .text-above {
+            top: -60px;
+            /* Ajusta la posición vertical del texto arriba de la flor */
+        }
+
+        .text-below {
+            bottom: -60px;
+            /* Ajusta la posición vertical del texto debajo de la flor */
+        }
+
+        @keyframes pulsate {
+            0% {
+                transform: scale(1.5);
+            }
+
+            50% {
+                transform: scale(1.6);
+            }
+
+            100% {
+                transform: scale(1.5);
+            }
+        }
+
+        .mid {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+
+            background: radial-gradient(circle, #000, #ff5e00, #000);
+
+            z-index: 4;
+
+            background-size: 5px 5px;
+
+            filter: drop-shadow(0 0 8px #682600);
+        }
+
+        .Petal1 {
+            position: absolute;
+            left: 40px;
+            z-index: 3;
+
+            width: 120px;
+            height: 30px;
+            border-radius: 50%;
+
+            background: radial-gradient(circle, #ff5e00, #ffbb00);
+
+            filter: drop-shadow(0 0 5px #e05200);
+        }
+
+        .Petal1.p1 {
+            transform: rotate(22.5deg);
+        }
+
+        .Petal1.p2 {
+            transform: rotate(67.5deg);
+        }
+
+        .Petal1.p3 {
+            transform: rotate(110.5deg);
+        }
+
+        .Petal1.p4 {
+            transform: rotate(157.5deg);
+        }
+
+        .Petal2 {
+            position: absolute;
+            left: 0;
+            z-index: 2;
+
+            width: 200px;
+            height: 40px;
+            border-radius: 50%;
+
+            background: radial-gradient(circle, #ff5e00, #fbd702);
+
+            filter: drop-shadow(0 0 5px #e05200);
+        }
+
+        .Petal2.p2 {
+            transform: rotate(90deg);
+        }
+
+        .Petal2.p3 {
+            transform: rotate(45deg);
+        }
+
+        .Petal2.p4 {
+            transform: rotate(135deg);
+        }
+
+        .Petal3 {
+            position: absolute;
+            left: 0px;
+            z-index: 1;
+
+            width: 200px;
+            height: 40px;
+            border-radius: 50%;
+
+            background: radial-gradient(circle, #ff5e00, #fbd702);
+
+            filter: drop-shadow(0 0 2px #fbd702);
+        }
+
+        .Petal3.p1 {
+            transform: rotate(22.5deg);
+        }
+
+        .Petal3.p2 {
+            transform: rotate(67.5deg);
+        }
+
+        .Petal3.p3 {
+            transform: rotate(110.5deg);
+        }
+
+        .Petal3.p4 {
+            transform: rotate(157.5deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="flower-container">
+        <div class="flower">
+            <div class="mid">
+            </div>
+            <div class="Petal1 p1">
+            </div>
+            <div class="Petal1 p2">
+            </div>
+            <div class="Petal1 p3">
+            </div>
+            <div class="Petal1 p4">
+            </div>
+            <div class="Petal2 p1">
+            </div>
+            <div class="Petal2 p2">
+            </div>
+            <div class="Petal2 p3">
+            </div>
+            <div class="Petal2 p4">
+            </div>
+            <div class="Petal3 p1">
+            </div>
+            <div class="Petal3 p2">
+            </div>
+            <div class="Petal3 p3">
+            </div>
+            <div class="Petal3 p4">
+            </div>
+        </div>
+    </div>
+    <div id="countdown-container">
+        <div class="countdown"></div>
+        <div id="pulse-btn">Pulsa aquí ↓</div>
+    </div>
+    <div id="play-btn" onclick="showButton()">PLAY</div>
+    <div id="phrase-btn" onclick="showNextPhrase()">YO QUISIERA SABER, QUE ES LO QUE TENGO QUE HACER</div>
+    <div id="reset-container">
+        <button id="reset-btn" onclick="reset()">Reset</button>
+    </div>
+    <audio id="backgroundMusic" src="music1.mp3" loop></audio>
+    <script>
+        var phrases = [
+            "YO QUISIERA SABER, QUE ES LO QUE TENGO QUE HACER",
+            "PARA GANARME TU AMOR, PARA OBTENER TU CORAZON Y YOOO NOSE TAL VEZ ME ESTOY ENAMORANDO DE TI",
+            "TU MI AMOR PLATONICO, TU ERES LA QUE QUIERO YO, TU QUE ME HACES SOÑAR TU SI QUE ME HACES VOLAR",
+            "TU ERES MI AMOR MI AP POR LA QUE MUERO TALVEZ AVECES SIENTO QUE TE EXTRAÑO PERO EN VERDAD NOSE",
+            "QUE ES LO QUE PASA POR MI MENTE ME SIENTO DIERENTE PERO SIGO O NO ME ENTIENDES LO QUE DIGO",
+            "ERES MI AP POR LA QUE YO GUARDE LA FE POR UN AMOR REAL CONTIGO SIEMPRE YO ESTARE",
+            "QUERO QUE SEPAS QUE YO GUARDO EN MILBRETA MLES CANCIONES PARA TI ALGUNAS INCOMPLETAS",
+            "TU MI AMOR PLATONICO, TU ERES LA QUE QUIERO YO, TU QUE ME HACES SOÑAR TU SI QUE ME HACES VOLAR",
+            "NAVEGAS EN MIS SUEÑOS COMO UN BARQUITO EN EL MAR SIN RUMBO SIN DESTINO OYE CONTIGO QUIERO ESTAR",
+            "TU ERES MI AMOR PLATONICO LA UNICA QUE DESEO YO, LA QUE LE DOY TODO MI AMOR LA DUEÑA DE MI CORAZON",
+            "TU MI AMOR PLATONICO, TU ERES LA QUE QUIERO YO, TU QUE ME HACES SOÑAR TU SI QUE ME HACES VOLAR",
+            "TU MI AMOR PLATONICO, TU ERES LA QUE QUIERO YO, TU QUE ME HACES SOÑAR TU SI QUE ME HACES VOLAR",
+            "PORQUE ERES TU LA QUE SE GANO MI CORAZON ENTERO ERES TU POR LA YO DIA A DIA MUERO",
+            "TE SOY SINCERO YO DESESPERO EN EL INTENTO DE TENER ME HAGO FUERTE Y NO PUEDO",
+            "ME PARO Y SIGO ADELANTE PERO LAS GANAS SE ME VAN EN EL INSTANTE",
+            "PROMETO QUE YO NUNCA VOY A DEJARTE Y TE JURO QUE POR SIEMPRE VOY AMARTE",
+            "TU MI AMOR PLATONICO, TU ERES LA QUE QUIERO YO, TU QUE ME HACES SOÑAR TU SI QUE ME HACES VOLAR",
+            "TU A MI ME HACES VOLAR A LAS ESTRELLAS LLEGAR EN UN SUEÑO VIAJAR",
+            "SOLO TU SOLO TU SOLO TU SOLO TU ESTOY LOCO POR TI POR TI POR TI"
+        ];
+        var currentIndex = 1;
+        function showButton() {
+            document.getElementById("countdown-container").style.display = "block";
+            startCountdown();
+            document.getElementById("pulse-btn").style.display = "none";
+            document.getElementById("play-btn").style.display = "none";
+            document.getElementById("phrase-btn").style.display = "block";
+            document.getElementById("reset-btn").style.display = "block";
+            backgroundMusic.play(); // Iniciar la música de fondo
+        }
+        function startPlayback() {
+            document.getElementById("pulse-btn").style.display = "block";
+            document.getElementById("play-btn").style.display = "none";
+            document.getElementById("phrase-btn").style.display = "block";
+            document.getElementById("reset-btn").style.display = "block";
+            backgroundMusic.play(); // Reanudar la música de fondo
+            showNextPhrase();
+        }
+        function showNextPhrase() {
+            if (currentIndex >= phrases.length) {
+                currentIndex = 0;
+                document.getElementById("pulse-btn").style.display = "none";
+                document.getElementById("play-btn").style.display = "block";
+                document.getElementById("phrase-btn").style.display = "none";
+                document.getElementById("reset-btn").style.display = "none";
+                backgroundMusic.pause(); // Reanudar la música de fondo
+                backgroundMusic.currentTime = 0; // Reiniciar la posición de reproducción
+                return;
+            }
+
+            var currentPhrase = phrases[currentIndex];
+            document.getElementById("phrase-btn").innerHTML = currentPhrase;
+            currentIndex++;
+        }
+        function reset() {
+            clearInterval(countdownInterval);
+            countdownElement.textContent = "";
+            document.getElementById("countdown-container").style.display = "none";
+            document.getElementById("pulse-btn").style.display = "none";
+            document.getElementById("play-btn").style.display = "block";
+            document.getElementById("phrase-btn").style.display = "none";
+            document.getElementById("reset-btn").style.display = "none";
+            backgroundMusic.pause(); // Reanudar la música de fondo
+            backgroundMusic.currentTime = 0; // Reiniciar la posición de reproducción
+            currentIndex = 0;
+            showNextPhrase(); // Mostrar la primera frase
+        }
+        var countdownInterval;
+        var countdownElement;
+
+        function startCountdown() {
+            var count = 15;
+            countdownElement = document.querySelector(".countdown");
+            countdownElement.textContent = count;
+            countdownInterval = setInterval(function () {
+                count--;
+                countdownElement.textContent = count;
+                if (count <= 0) {
+                    clearInterval(countdownInterval);
+                    countdownElement.textContent = "";
+                    document.getElementById("pulse-btn").addEventListener("click", startPlayback);
+                    document.getElementById("pulse-btn").style.display = "block";
+                }
+            }, 1000);
+        }
+
+
+        function generateRandomFlowers() {
+            var flowerContainer = document.getElementById("flower-container");
+            var flower = document.querySelector(".flower");
+
+            for (var i = 0; i < 3; i++) {
+                var clonedFlower = flower.cloneNode(true);
+                // Ajusta la posición y el estilo de la flor clonada de forma aleatoria
+                clonedFlower.style.left = Math.random() * 10 + "px"; // Posición horizontal aleatoria
+                clonedFlower.style.top = Math.random() * 0.01 + "px";  // Posición vertical aleatoria
+                clonedFlower.style.scale = Math.random() * 0.5 + 0.6; // Escala aleatoria
+                
+                flowerContainer.appendChild(clonedFlower);
+            }
+        }
+
+        // Llama a la función para generar las flores aleatorias cuando se carga la página
+        window.onload = generateRandomFlowers;
+    </script>
+</body>
+
+</html>
