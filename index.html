@@ -11,7 +11,8 @@
             align-items: center;
             flex-direction: column;
             height: 100vh;
-            margin: 0;width: 100%;
+            margin: 0;
+            width: 100%;
         }
 
         #flower-container {
@@ -22,6 +23,7 @@
             overflow: hidden;
             z-index: -1;
         }
+
         #play-btn,
         #phrase-btn {
             width: 200px;
@@ -258,6 +260,20 @@
         .Petal3.p4 {
             transform: rotate(157.5deg);
         }
+        @media (max-width: 600px) {
+    /* Estilos para pantallas pequeñas */
+    #play-btn,
+    #phrase-btn {
+        width: 100%; /* Haz que los botones ocupen todo el ancho */
+        height: auto; /* Permite que la altura se ajuste automáticamente */
+    }
+
+    .flower {
+        height: auto; /* Permite que la altura se ajuste automáticamente */
+    }
+
+    /* Agrega otros estilos específicos para pantallas pequeñas si es necesario */
+}
     </style>
 </head>
 
@@ -395,22 +411,15 @@
             var flowerContainer = document.getElementById("flower-container");
             var flower = document.querySelector(".flower");
 
-            for (var i = 0; i < 4; i++) {
+            for (var i = 0; i < 10; i++) {
                 var clonedFlower = flower.cloneNode(true);
-                // Ajusta la posición y el estilo de la flor clonada de forma aleatoria
-                clonedFlower.style.left = Math.random() * 200 + "px"; // Posición horizontal aleatoria
+                if (i % 2 === 0) {
+                    clonedFlower.style.left = Math.random() * -500 + "px"; // Posición horizontal aleatoria
+                }else{
+                    clonedFlower.style.left = Math.random() * 500 + "px"; // Posición horizontal aleatoria
+                }
                 clonedFlower.style.top = Math.random() * 1 + "px";  // Posición vertical aleatoria
                 clonedFlower.style.scale = Math.random() * 0.5 + 0.6; // Escala aleatoria
-                
-                flowerContainer.appendChild(clonedFlower);
-            }
-            for (var i = 0; i < 4; i++) {
-                var clonedFlower = flower.cloneNode(true);
-                // Ajusta la posición y el estilo de la flor clonada de forma aleatoria
-                clonedFlower.style.left = Math.random() * 1 + "px"; // Posición horizontal aleatoria
-                clonedFlower.style.top = Math.random() * 1 + "px";  // Posición vertical aleatoria
-                clonedFlower.style.scale = Math.random() * 0.5 + 0.6; // Escala aleatoria
-                
                 flowerContainer.appendChild(clonedFlower);
             }
         }
