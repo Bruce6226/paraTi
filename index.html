@@ -395,11 +395,20 @@
             var flowerContainer = document.getElementById("flower-container");
             var flower = document.querySelector(".flower");
 
-            for (var i = 0; i < 3; i++) {
+            for (var i = 0; i < 4; i++) {
                 var clonedFlower = flower.cloneNode(true);
                 // Ajusta la posición y el estilo de la flor clonada de forma aleatoria
-                clonedFlower.style.left = Math.random() * 10 + "px"; // Posición horizontal aleatoria
-                clonedFlower.style.top = Math.random() * 0.01 + "px";  // Posición vertical aleatoria
+                clonedFlower.style.left = Math.random() * 200 + "px"; // Posición horizontal aleatoria
+                clonedFlower.style.top = Math.random() * 1 + "px";  // Posición vertical aleatoria
+                clonedFlower.style.scale = Math.random() * 0.5 + 0.6; // Escala aleatoria
+                
+                flowerContainer.appendChild(clonedFlower);
+            }
+            for (var i = 0; i < 4; i++) {
+                var clonedFlower = flower.cloneNode(true);
+                // Ajusta la posición y el estilo de la flor clonada de forma aleatoria
+                clonedFlower.style.left = Math.random() * 1 + "px"; // Posición horizontal aleatoria
+                clonedFlower.style.top = Math.random() * 1 + "px";  // Posición vertical aleatoria
                 clonedFlower.style.scale = Math.random() * 0.5 + 0.6; // Escala aleatoria
                 
                 flowerContainer.appendChild(clonedFlower);
