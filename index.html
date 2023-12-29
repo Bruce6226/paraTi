@@ -6,7 +6,7 @@
     <style>
         body {
             display: flex;
-            background: black;
+            background: rgb(255, 255, 255);
             justify-content: center;
             align-items: center;
             flex-direction: column;
@@ -60,27 +60,14 @@
         }
 
         #reset-btn {
-            display: none;
-            width: 120px;
-            height: 40px;
-            background-color: #ff0000;
-            color: #ffffff;
-            font-size: 14px;
-            opacity: 0.5;
+            margin-top: 30px;
+            background-color: transparent;
+            border: 0px;
+        }
+
+        #reset-btn img {
+            width: 40px;
             cursor: pointer;
-            opacity: 0.5;
-        }
-
-        #reset-container {
-            display: flex;
-            align-items: center;
-            color: #fff;
-            background-color: #ee6060;
-            opacity: 0.5;
-        }
-
-        #reset-container:hover {
-            background-color: #f7b2b2;
         }
 
         #pulse-btn {
@@ -161,17 +148,57 @@
             }
         }
 
+        .flower {
+            height: 200px;
+            width: 200px;
+            margin: 20px auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+            background-color: transparent;
+            animation: pulsate 2s infinite;
+        }
+
+        .text-above,
+        .text-below {
+            position: absolute;
+            text-align: center;
+            color: #fff;
+            font-size: 25px;
+        }
+
+        .text-above {
+            top: -60px;
+        }
+
+        .text-below {
+            bottom: -60px;
+        }
+
+        @keyframes pulsate {
+            0% {
+                transform: scale(1.5);
+            }
+
+            50% {
+                transform: scale(1.6);
+            }
+
+            100% {
+                transform: scale(1.5);
+            }
+        }
+
         .mid {
             width: 50px;
             height: 50px;
             border-radius: 50%;
-
-            background: radial-gradient(circle, #000, #ff5e00, #000);
-
+            background: radial-gradient(circle, #8a2be2, #800080, #ff69b4, #9932cc);
             z-index: 4;
-
             background-size: 5px 5px;
-
             filter: drop-shadow(0 0 8px #682600);
         }
 
@@ -179,13 +206,10 @@
             position: absolute;
             left: 40px;
             z-index: 3;
-
             width: 120px;
             height: 30px;
             border-radius: 50%;
-
-            background: radial-gradient(circle, #ff5e00, #ffbb00);
-
+            background: radial-gradient(circle, #8a2be2, #800080, #ff69b4, #9932cc);
             filter: drop-shadow(0 0 5px #e05200);
         }
 
@@ -209,13 +233,10 @@
             position: absolute;
             left: 0;
             z-index: 2;
-
             width: 200px;
             height: 40px;
             border-radius: 50%;
-
-            background: radial-gradient(circle, #ff5e00, #fbd702);
-
+            background: radial-gradient(circle, #8a2be2, #800080, #ff69b4, #9932cc);
             filter: drop-shadow(0 0 5px #e05200);
         }
 
@@ -235,13 +256,10 @@
             position: absolute;
             left: 0px;
             z-index: 1;
-
             width: 200px;
             height: 40px;
             border-radius: 50%;
-
-            background: radial-gradient(circle, #ff5e00, #fbd702);
-
+            background: radial-gradient(circle, #8a2be2, #800080, #ff69b4, #9932cc);
             filter: drop-shadow(0 0 2px #fbd702);
         }
 
@@ -260,20 +278,25 @@
         .Petal3.p4 {
             transform: rotate(157.5deg);
         }
+
         @media (max-width: 600px) {
-    /* Estilos para pantallas pequeñas */
-    #play-btn,
-    #phrase-btn {
-        width: 100%; /* Haz que los botones ocupen todo el ancho */
-        height: auto; /* Permite que la altura se ajuste automáticamente */
-    }
 
-    .flower {
-        height: auto; /* Permite que la altura se ajuste automáticamente */
-    }
+            /* Estilos para pantallas pequeñas */
+            #play-btn,
+            #phrase-btn {
+                width: 100%;
+                /* Haz que los botones ocupen todo el ancho */
+                height: auto;
+                /* Permite que la altura se ajuste automáticamente */
+            }
 
-    /* Agrega otros estilos específicos para pantallas pequeñas si es necesario */
-}
+            .flower {
+                height: auto;
+                /* Permite que la altura se ajuste automáticamente */
+            }
+
+            /* Agrega otros estilos específicos para pantallas pequeñas si es necesario */
+        }
     </style>
 </head>
 
@@ -314,8 +337,10 @@
     </div>
     <div id="play-btn" onclick="showButton()">PLAY</div>
     <div id="phrase-btn" onclick="showNextPhrase()">YO QUISIERA SABER, QUE ES LO QUE TENGO QUE HACER</div>
-    <div id="reset-container">
-        <button id="reset-btn" onclick="reset()">Reset</button>
+    <div>
+        <button id="reset-btn" onclick="reset()">
+            <img src="assets/reset.png" alt="">
+        </button>
     </div>
     <audio id="backgroundMusic" src="assets/music1.mp3" loop></audio>
     <script>
@@ -415,7 +440,7 @@
                 var clonedFlower = flower.cloneNode(true);
                 if (i % 2 === 0) {
                     clonedFlower.style.left = Math.random() * -500 + "px"; // Posición horizontal aleatoria
-                }else{
+                } else {
                     clonedFlower.style.left = Math.random() * 500 + "px"; // Posición horizontal aleatoria
                 }
                 clonedFlower.style.top = Math.random() * 1 + "px";  // Posición vertical aleatoria
